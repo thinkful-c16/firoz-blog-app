@@ -8,17 +8,28 @@ const data = require('../db/blog-data');
 
 
 const { DATABASE } = require('../config');
-//const knex = require('knex')(DATABASE);
+const knex = require('knex')(DATABASE);
+//let data = [];
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/stories', (req, res) => {
-  if (req.query.search) {
-    const filtered = data.filter((obj) => obj.title.includes(req.query.search));
-    res.json(filtered);
-  } else {
-    res.json(data);
-  }
+  
+  knex('stories')
+  .select()
+  .then(result => res.json(result));
+  // if (req.query.search) {
+  //   const filtered = data.filter((obj) => obj.title.includes(req.query.search));
+  //   res.json(filtered);
+  // } else {
+  //   res.json(data);
+  // }
 });
+
+// router.get('/testingStories', (req, res) =>{
+//   knex('stories')
+//     .select()
+//     .then(result => res.json(result));
+// });
 
 /* ========== GET/READ SINGLE ITEMS ========== */
 router.get('/stories/:id', (req, res) => {
