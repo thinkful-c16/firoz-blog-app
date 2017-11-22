@@ -7,8 +7,8 @@ const router = express.Router();
 const data = require('../db/blog-data');
 
 
-// const { DATABASE } = require('../config');
-// const knex = require('knex')(DATABASE);
+const { DATABASE } = require('../config');
+//const knex = require('knex')(DATABASE);
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/stories', (req, res) => {
